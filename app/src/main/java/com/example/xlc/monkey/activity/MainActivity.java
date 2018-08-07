@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.xlc.monkey.R;
 import com.example.xlc.monkey.adapter.RecycleViewAdapter;
 import com.example.xlc.monkey.base.BaseActivity;
+import com.example.xlc.monkey.utils.ToastUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,6 +41,6 @@ public class MainActivity extends BaseActivity implements RecycleViewAdapter.OnI
     @Override
     public void onClick(String msg, int position) {
         //点击条目
-
+        ToastUtil.showLongToast(this,msg+"   "+position);
     }
 }
