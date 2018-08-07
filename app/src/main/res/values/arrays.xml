@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="main_item_name">
+        <item>频道选择器</item>
+        <item>recycleView</item>
+        <item>recycleView</item>
+        <item>recycleView</item>
+        <item>recycleView</item>
+        <item>recycleView</item>
+        <item>recycleView</item>
+    </string-array>
+</resources>
