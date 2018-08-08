@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/leftTimeLine"
+        android:layout_width="32dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/topline"
+            android:layout_width="0.5dp"
+            android:layout_height="12dp"
+            android:layout_centerHorizontal="true"
+            android:background="#999"/>
+
+        <TextView
+            android:id="@+id/dot"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_below="@+id/topline"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/timeline_dot_first"/>
+
+        <TextView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/dot"
+            android:layout_centerHorizontal="true"
+            android:background="#999"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rightTimeLine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="6dp"
+        android:paddingRight="10dp"
+        android:paddingTop="6dp">
+
+        <TextView
+            android:id="@+id/acceptTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#999"
+            android:text="2018/06/24 20:08:08"/>
+
+        <TextView
+            android:id="@+id/acceptStation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/acceptTime"
+            android:layout_marginTop="5dp"
+            android:textSize="12sp"
+            android:textColor="#999"
+            android:text="快件在 深圳 ,准备送往下一站 深圳集散中心 [深圳市]"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
