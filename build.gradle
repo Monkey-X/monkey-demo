@@ -15,7 +15,7 @@ buildscript {
 }
 
 allprojects {
-    repositories {
+    repositories {//仓库
         google()
         jcenter()
     }

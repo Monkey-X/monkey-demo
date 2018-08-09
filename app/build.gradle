@@ -9,12 +9,16 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+        multiDexEnabled true  //  dex突破65535的限制
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled false  //开启混淆
+            zipAlignEnabled false  //Zipalign 优化
+            shrinkResources false   //移除无用的resource文件
+//            signingConfig     s设置签名信息
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -24,6 +28,27 @@ android {
             outputFileName = "Monkey-v${defaultConfig.versionName}_${variant.buildType.name}.apk"
         }
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+//    productFlavors {//友盟统计的多渠道打包
+//        baidu {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+//        }
+//        wandoujia {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+//        }
+//        xiaomi {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+//        }
+//        google {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "google"]
+//        }
+//    }
 
 }
 
