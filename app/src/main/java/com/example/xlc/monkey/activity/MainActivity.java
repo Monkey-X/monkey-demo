@@ -45,6 +45,9 @@ public class MainActivity extends BaseActivity implements RecycleViewAdapter.OnI
             case 0:
                 startActivity(new Intent(this,TimeLineActivity.class));
                 break;
+            case 1:
+                startActivity(new Intent(this,ImageActivity.class));
+                break;
         }
     }
 }

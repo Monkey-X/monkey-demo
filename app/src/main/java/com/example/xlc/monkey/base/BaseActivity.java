@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,11 +14,13 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import pub.devrel.easypermissions.EasyPermissions;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
 
     private Unbinder mUnbinder;
@@ -25,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setBeforeView();
         setContentView(getLayoutId());
         getIntentData();
         mUnbinder = ButterKnife.bind(this);
@@ -32,7 +36,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData();
     }
 
-    public void getIntentData() {
+    //在setContentView之前执行
+    protected void setBeforeView() {
+    }
+
+    protected void getIntentData() {
 
     }
 
@@ -49,6 +57,24 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        //动态权限申请后返回的结果交予easyPermission处理
+//        EasyPermissions.onRequestPermissionsResult(requestCode,permissions,grantResults,this);
+//    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        //获取权限失败
+    }
+
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        //获取权限成功
+    }
 
     /**
      * 设置状态栏

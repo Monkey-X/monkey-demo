@@ -1,4 +1,4 @@
-package com.example.xlc.monkey.widget;
+package com.example.xlc.monkey.dialog;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -42,7 +42,7 @@ public class CommonDialogFragment extends DialogFragment {
         return newInstance(callDialog, cancelable, null);
     }
 
-    private static CommonDialogFragment newInstance(OnCallDialog callDialog, boolean cancelable, OnDialogCancelListener cancelListener) {
+    public static CommonDialogFragment newInstance(OnCallDialog callDialog, boolean cancelable, OnDialogCancelListener cancelListener) {
 
         CommonDialogFragment instance = new CommonDialogFragment();
         instance.setCancelable(cancelable);

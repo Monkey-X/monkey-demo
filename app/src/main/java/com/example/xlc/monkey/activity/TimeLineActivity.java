@@ -14,7 +14,7 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * 時間
+ * 时间轴
  */
 public class TimeLineActivity extends BaseActivity {
 
