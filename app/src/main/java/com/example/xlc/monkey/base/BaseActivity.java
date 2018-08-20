@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.xlc.monkey.net.NetEvent;
+
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -20,16 +22,19 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public abstract class BaseActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+public abstract class BaseActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks,NetEvent {
 
 
     private Unbinder mUnbinder;
+    public static NetEvent event;//实现网络变化的接口
+    private int netState;//网络状态值
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setBeforeView();
         setContentView(getLayoutId());
+        event = this;
         getIntentData();
         mUnbinder = ButterKnife.bind(this);
         initView();
@@ -50,6 +55,14 @@ public abstract class BaseActivity extends AppCompatActivity implements EasyPerm
 
     protected abstract void initData();
 
+    /**
+     *  //获取网络变化后的状态值
+     * @param netState
+     */
+    @Override
+    public void onNetChange(int netState) {
+        this.netState = netState;
+    }
 
     @Override
     protected void onDestroy() {
