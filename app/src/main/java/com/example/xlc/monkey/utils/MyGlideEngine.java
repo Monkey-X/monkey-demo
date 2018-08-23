@@ -10,6 +10,9 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 import com.zhihu.matisse.engine.ImageEngine;
 
+/**
+ * 知乎的图片的选择器的图片加载引擎
+ */
 
 public class MyGlideEngine implements ImageEngine {
     @Override
