@@ -3,17 +3,20 @@
           package="com.example.xlc.monkey">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <!--读取系统的短信的权限-->
+    <!-- 读取系统的短信的权限 -->
     <uses-permission android:name="android.permission.READ_SMS"/>
-    <!--读取系统的联系人的权限-->
+    <!-- 接收短信权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <!-- 读取系统的联系人的权限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <!--指纹认证的权限-->
+    <!-- 指纹认证的权限 -->
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <!--悬浮窗口权限-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:allowBackup="true"
@@ -23,15 +26,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
-
         </activity>
-
+        <!-- 监听网络的变化 -->
         <receiver android:name=".net.NetBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
-
+        <!-- 监听短信的接受 -->
+        <receiver android:name=".sms.SmsBroadcastReceiver">
+            <intent-filter android:priority="999">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".activity.TimeLineActivity">
         </activity>
@@ -53,6 +60,9 @@
         <activity
             android:name=".activity.ScrollingActivity"
             android:label="@string/title_activity_scrolling">
+
+        </activity>
+        <activity android:name=".sms.SmsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
