@@ -48,8 +48,10 @@ public class SmsActivity extends AppCompatActivity implements SmsEvent {
             insertDummyContactWrapper();
         }
     }
+
+
     @TargetApi(Build.VERSION_CODES.M)
-    private void insertDummyContactWrapper() {
+    private void insertDummyContactWrapper() {//打开悬浮窗口的权限
         if (!Settings.canDrawOverlays(SmsActivity.this)) {
             showMessageOKCancel("请在应用权限中允许\n\t打开悬浮窗权限",
                     new DialogInterface.OnClickListener() {

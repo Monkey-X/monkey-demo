@@ -32,6 +32,7 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
                 String phone = address.replace("+86", "");
                 System.out.print(phone + "  " + content);
                 mSmsEvent.smsReceive(phone, content);
+                abortBroadcast();//停止有序广播的传递
             }
         }
 

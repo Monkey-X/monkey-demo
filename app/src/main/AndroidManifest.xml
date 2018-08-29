@@ -35,7 +35,7 @@
         </receiver>
         <!-- 监听短信的接受 -->
         <receiver android:name=".sms.SmsBroadcastReceiver">
-            <intent-filter android:priority="999">
+            <intent-filter android:priority="1000">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
             </intent-filter>
         </receiver>
@@ -56,6 +56,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+
+        <!--fitAndroid8-->
+        <!--<provider android:name="android.support.v4.content.FileProvider"-->
+            <!--android:authorities="${applicationId}.android.fileprovider"-->
+            <!--android:exported="false"-->
+            <!--android:grantUriPermissions="true">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                <!--android:resource="@xml/files_paths"/>-->
+        <!--</provider>-->
 
         <activity
             android:name=".activity.ScrollingActivity"
