@@ -5,8 +5,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.xlc.monkey.R;
+import com.example.xlc.monkey.activity.splash.SplashActivity;
 import com.example.xlc.monkey.adapter.RecycleViewAdapter;
 import com.example.xlc.monkey.base.BaseActivity;
+import com.example.xlc.monkey.sms.SmsActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,6 +49,12 @@ public class MainActivity extends BaseActivity implements RecycleViewAdapter.OnI
                 break;
             case 1:
                 startActivity(new Intent(this,ImageActivity.class));
+                break;
+            case 2:
+                startActivity(new Intent(this,SplashActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(this,SmsActivity.class));
                 break;
         }
     }

@@ -21,12 +21,18 @@ import android.view.ViewConfiguration;
 public class RecycleRefreshLayout extends SwipeRefreshLayout implements SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView mRecyclerView;
+    //滑动距离代滚动
     private int mTouchSlop;
     private SuperRefreshLayoutListener mListener;
+    //是否正在加载
     private boolean mIsOnLoading = false;
+    //是否加载更多
     private boolean mCanLoadMore = true;
+
+    private boolean mHasMore = true;
     private float mYDown;
     private float mLastY;
+    private int mBottomCount = 1;
 
     public RecycleRefreshLayout(@NonNull Context context) {
         this(context, null);
@@ -100,8 +106,8 @@ public class RecycleRefreshLayout extends SwipeRefreshLayout implements SwipeRef
                 break;
             case MotionEvent.ACTION_UP:
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
         return super.dispatchTouchEvent(event);
     }
@@ -112,14 +118,23 @@ public class RecycleRefreshLayout extends SwipeRefreshLayout implements SwipeRef
      * @return
      */
     private boolean isNextScrollBottom() {
-
         return (mRecyclerView != null && mRecyclerView.getAdapter() != null)
                 && getLastVisiblePosition() == (mRecyclerView.getAdapter().getItemCount() - 1);
+    }
 
+    /**
+     * 判断是否到了最底部
+     *
+     * @return
+     */
+    private boolean isScrollBottom() {
+        return (mRecyclerView != null && mRecyclerView.getAdapter() != null)
+                && getLastVisiblePosition() == (mRecyclerView.getAdapter().getItemCount() - mBottomCount);
     }
 
     /**
      * 获取recycleview可见的最后一项
+     *
      * @return
      */
     private int getLastVisiblePosition() {
@@ -140,33 +155,94 @@ public class RecycleRefreshLayout extends SwipeRefreshLayout implements SwipeRef
 
     /**
      * 获取最大值
+     *
      * @param lastPositions
      * @return
      */
     private int getMaxPosition(int[] lastPositions) {
         int maxPosition = Integer.MIN_VALUE;
         for (int position : lastPositions) {
-            maxPosition = Math.max(maxPosition,position);
+            maxPosition = Math.max(maxPosition, position);
         }
         return maxPosition;
     }
 
     private void loadData() {
-        if (mListener!=null) {
+        if (mListener != null) {
             setOnLoading(true);
             mListener.onLoadMore();
         }
     }
 
-    private void setOnLoading(boolean loading) {
-        mIsOnLoading  = loading;
-
+    /**
+     * 设置正在加载
+     *
+     * @param loading
+     */
+    public void setOnLoading(boolean loading) {
+        mIsOnLoading = loading;
+        if (!mIsOnLoading) {
+            mYDown = 0;
+            mLastY = 0;
+        }
 
     }
 
+
+    /**
+     * 加载结束时调用
+     */
+    public void onComplete(){
+        setOnLoading(false);
+        setRefreshing(false);
+        mHasMore = true;
+    }
+
+    /**
+     * 是否可加载更多
+     * @param canLoadMore
+     */
+    public void setCanLoadMore(boolean canLoadMore){
+        this.mCanLoadMore = canLoadMore;
+    }
+
+    /**
+     * 是否正在加载
+     *
+     * @return
+     */
+    public boolean isLoading() {
+        return mIsOnLoading;
+    }
+
+    /**
+     * 距离底部几个条目时可以加载更多
+     *
+     * @param bottomCount
+     */
+    public void setBottomCount(int bottomCount) {
+        this.mBottomCount = bottomCount;
+    }
+
+    /**
+     * 是否可以加载更多，
+     *
+     * @return
+     */
     private boolean canLoad() {
-        return true;
+        return isScrollBottom() && !mIsOnLoading && isPullUp() && mHasMore;
+
     }
+
+    /**
+     * 是否是上啦操作
+     * @return
+     */
+    private boolean isPullUp() {
+        return (mYDown - mLastY) >= mTouchSlop;
+
+    }
+
 
     /**
      * 添加加载和刷新

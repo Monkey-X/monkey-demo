@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.example.xlc.monkey.view.FitImageView
+    <com.example.xlc.monkey.activity.splash.FitImageView
         android:id="@+id/item_bg"
         android:layout_width="match_parent"
-        android:src="@mipmap/splash_bg"
+        android:src="@mipmap/ww1"
         android:layout_height="wrap_content"/>
 
     <!--<ImageView-->

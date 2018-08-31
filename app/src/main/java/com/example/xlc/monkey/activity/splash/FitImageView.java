@@ -1,4 +1,4 @@
-package com.example.xlc.monkey.view;
+package com.example.xlc.monkey.activity.splash;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

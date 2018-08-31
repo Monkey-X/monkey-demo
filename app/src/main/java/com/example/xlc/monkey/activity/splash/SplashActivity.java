@@ -1,4 +1,4 @@
-package com.example.xlc.monkey.activity;
+package com.example.xlc.monkey.activity.splash;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.WindowManager;
@@ -6,7 +6,6 @@ import android.view.WindowManager;
 import com.example.xlc.monkey.R;
 import com.example.xlc.monkey.adapter.SplashAdapter;
 import com.example.xlc.monkey.base.BaseActivity;
-import com.example.xlc.monkey.view.ScrollLinearLayoutManager;
 
 import butterknife.BindView;
 

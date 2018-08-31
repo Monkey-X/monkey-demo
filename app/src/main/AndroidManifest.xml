@@ -26,6 +26,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <!-- 监听网络的变化 -->
         <receiver android:name=".net.NetBroadcastReceiver">
@@ -42,7 +47,7 @@
 
         <activity android:name=".activity.TimeLineActivity">
         </activity>
-        <activity android:name=".activity.SplashActivity">
+        <activity android:name=".activity.splash.SplashActivity">
         </activity>
         <activity android:name=".activity.ImageActivity">
         </activity>
@@ -73,11 +78,7 @@
 
         </activity>
         <activity android:name=".sms.SmsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
     </application>
 
