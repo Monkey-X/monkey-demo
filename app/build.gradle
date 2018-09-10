@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'//这里添加
+apply plugin: 'kotlin-android-extensions'//这里添加
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -64,6 +66,9 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
     implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportVersion"
     implementation "com.android.support:design:$rootProject.ext.supportVersion"
+    //添加kotlin开发
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"//主要是这两个依赖
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"//主要是这两个依赖
 
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:design:27.1.1'
@@ -87,4 +92,9 @@ dependencies {
     //smartRefreshLatout 列表刷新控件上啦加载更多，下拉刷新
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
+    //日志打印框架logger
+    implementation 'com.orhanobut:logger:2.2.0'
+
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.1"
 }

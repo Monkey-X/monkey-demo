@@ -1,15 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    //添加kotlin的版本
+    ext{
+        kotlin_version = '1.2.60'
+    }
 
     repositories {
+//        阿里云的仓库
+        maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         google()
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
-
+//        kotlin开发的插件
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

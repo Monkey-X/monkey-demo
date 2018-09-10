@@ -8,6 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--解决app打开时出现的白屏或者黑屏的现象-->
+    <style name="Theme.perview" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
 
     <style name="Base_AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
         <item name="android:windowMinWidthMinor">90%</item>

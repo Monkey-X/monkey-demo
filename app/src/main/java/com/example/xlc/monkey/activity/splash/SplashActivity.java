@@ -1,5 +1,6 @@
 package com.example.xlc.monkey.activity.splash;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.WindowManager;
 
@@ -18,6 +19,15 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void setBeforeView() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //解决app安装第一次进入app内容后，按home键重启app的问题
+        if (!isTaskRoot() && getIntent() != null) {
+            String action = getIntent().getAction();
+            if (getIntent().hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) {
+                finish();
+                return;
+            }
+        }
     }
 
     @Override
