@@ -39,8 +39,8 @@ public class SPUtil {
         }else{
             edit.putString(key,object.toString());
         }
-        edit.apply();//异步提交，没有返回值
-//        edit.commit();//同步提交，有返回值
+//        edit.apply();//异步提交，没有返回值
+        edit.commit();//同步提交，有返回值
     }
 
 

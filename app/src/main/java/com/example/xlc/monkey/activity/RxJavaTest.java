@@ -4,7 +4,9 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author:xlc
@@ -69,7 +71,9 @@ public class RxJavaTest {
             }
         };
         //建立联系
-        observable.subscribe(observer);
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
     }
 
 
@@ -90,3 +94,4 @@ public class RxJavaTest {
 //Schedulers.computation CPU计算密集型的操作，大量计算
 //Schedulers.newThread()  常规线程
 //AndroidSchedulers.mainThread() 代表Android的主线程
+//RxJava 内置一个容器CompositeDisposable 管理Disposable   添加时CompositeDisposable.add()    删除 CompositeDisposable.clear();
