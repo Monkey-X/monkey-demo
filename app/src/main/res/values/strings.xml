@@ -103,4 +103,10 @@
     <string name="biometric_dialog_state_error_enable_process">Verification error, setup failed</string>
     <string name="biometric_dialog_state_succeeded">Verification successful</string>
     <string name="biometric_dialog_use_password">Use Password</string>
+
+
+    <!--可展开的textview-->
+    <string name="social_contract">收起</string>
+    <string name="social_expand">展开</string>
+    <string name="social_text_target">网页链接</string>
 </resources>

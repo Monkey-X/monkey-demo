@@ -71,6 +71,10 @@ public class RxJavaActivity extends BaseActivity {
     }
 
     /**
+     * sample操作符 每隔指定的时间就从上游中取出一个事件发送给下游
+     */
+
+    /**
      * flatMap 操作符
      * 将上游Observable事件变换为多个Observable发送事件，在将事件合并后放在另一个事件上游里面
      * 上游每个事件，flatmap都会创建一个新的通道，然后发送转换之后的新的事件，下游接受到是这些新的通道发送的数据

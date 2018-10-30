@@ -117,18 +117,49 @@ public class SignInView extends View {
             //判断需要画出的是左半边还是右半边的半个圆弧
             if (a % 2 != 0) {
                 if (a + 1 != rowCount) {
-                    drawLeftOrRightArc(true,canvas,0+strokeWidth,y,0+rowHeight+strokeWidth,y+rowHeight);
+                    drawLeftOrRightArc(true, canvas, 0 + strokeWidth, y, 0 + rowHeight + strokeWidth, y + rowHeight);
                 }
             } else {
                 if (a + 1 != rowCount) {
-                    drawLeftOrRightArc(false,canvas,endX - rowHeight / 2 - strokeWidth, y, endX + rowHeight / 2 - strokeWidth, y + rowHeight);
+                    drawLeftOrRightArc(false, canvas, endX - rowHeight / 2 - strokeWidth, y, endX + rowHeight / 2 - strokeWidth, y + rowHeight);
                 }
             }
+            //判断这条线上礼物的点，以及顺序是顺序还是倒序着画
+            mBitmapList.clear();
+            int lastDay = (monthDay % 7) == 0 ? 7 : (monthDay % 7);
+            for (int b = 0; b < (a + 1 == rowCount ? (lastDay) : 7); b++) {
+                days++;
+                if (days <= signInCount) {
+                    if (days == 3 || days == 8 || days == 14 || days == 21 || days == monthDay) {
+                        mBitmapList.add(a % 2 != 0 ? 0 : mBitmapList.size(), mOpenGiftBitmap);
+                    } else {
+                        mBitmapList.add(a % 2 != 0 ? 0 : mBitmapList.size(), mCheckBitmap);
+                    }
+                }else{
+                    if (days == 3 || days == 8 || days == 14 || days == 21 || days == monthDay)
+                    {
+                        mBitmapList.add(a % 2 != 0 ? 0 : mBitmapList.size(), mCloseGiftBitmap);
+                    } else
+                    {
+                        mBitmapList.add(a % 2 != 0 ? 0 : mBitmapList.size(), mUnCheckBitmap);
+                    }
+                }
+            }
+
+            drawImgs(mBitmapList,startX,endX,y,canvas);
         }
 
     }
 
-    // TODO: 2018/8/31 未完待续
+    /**
+     * 判断绘制左边半圆弧，还是右边的半圆弧
+     * @param isLeft
+     * @param canvas
+     * @param left
+     * @param top
+     * @param right
+     * @param bottom
+     */
     private void drawLeftOrRightArc(boolean isLeft, Canvas canvas, float left, int top, float right, int bottom) {
 
         mPaint.setStrokeWidth(strokeWidth);
@@ -136,22 +167,43 @@ public class SignInView extends View {
         if (isLeft) {
             mPaint.setStyle(Paint.Style.STROKE);
             oval.setEmpty();
-            oval.set(left,top,right,bottom);
-            canvas.drawArc(oval,90,180,false,mPaint);
+            oval.set(left, top, right, bottom);
+            canvas.drawArc(oval, 90, 180, false, mPaint);
             mPaint.setStrokeWidth(1);
             mPaint.setColor(rashColor);
-            canvas.drawArc(oval,90,180,false,mPaint);
-        }else{
+            canvas.drawArc(oval, 90, 180, false, mPaint);
+        } else {
             mPaint.setStyle(Paint.Style.STROKE);
             oval.setEmpty();
-            oval.set(left,top,right,bottom);
-            canvas.drawArc(oval,270,180,false,mPaint);
+            oval.set(left, top, right, bottom);
+            canvas.drawArc(oval, 270, 180, false, mPaint);
             mPaint.setStrokeWidth(1);
             mPaint.setColor(rashColor);
-            canvas.drawArc(oval,270,180,false,mPaint);
+            canvas.drawArc(oval, 270, 180, false, mPaint);
         }
 
         mPaint.setStrokeWidth(strokeWidth);
         mPaint.setColor(backColor);
+    }
+
+    /**
+     * 画出路线上的图片，勾选，礼物
+     *
+     * @param bitmapList
+     * @param startx
+     * @param endx
+     * @param y
+     * @param canvas
+     */
+    private void drawImgs(List<Bitmap> bitmapList, float startx, float endx, float y, Canvas canvas) {
+        if (!bitmapList.isEmpty()) {
+            startx = startx - bitmapList.get(0).getWidth() / 2;
+            int count = bitmapList.size();
+            float bitmap_width = (endx - startx) / (count - 1);
+            for (int i = 0; i < count; i++) {
+                Bitmap bitmap = bitmapList.get(i);
+                canvas.drawBitmap(bitmap, startx + (bitmap_width * i), y - bitmap.getHeight() / 2, mPaint);
+            }
+        }
     }
 }

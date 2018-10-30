@@ -2,11 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.xlc.monkey">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-sdk android:minSdkVersion="8"/>
+    <!--文件写入-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- 必须的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 推荐的权限 -->
+    <!-- 添加如下权限，以便使用更多的第三方SDK和更精准的统计数据 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
     <!-- 读取系统的短信的权限 -->
     <uses-permission android:name="android.permission.READ_SMS"/>
     <!-- 接收短信权限 -->
@@ -26,6 +39,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- 友盟统计 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5b72b15fb27b0a414a000035"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
+
         <activity android:name=".activity.MainActivity">
         </activity>
         <!-- 监听网络的变化 -->
@@ -73,15 +95,23 @@
             android:label="@string/title_activity_scrolling">
         </activity>
         <activity android:name=".sms.SmsActivity">
+        </activity>
+        <activity android:name=".activity.rxjava.RxJavaActivity">
+        </activity>
+        <activity android:name=".avoidonresult.AvoidActivty">
+        </activity>
+        <activity android:name=".wxapi.WXEntryActivity">
+        </activity>
+        <activity android:name=".activity.LottieActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.rxjava.RxJavaActivity">
+        <activity android:name=".activity.ScreenShotActivity">
         </activity>
-        <activity android:name=".avoidonresult.AvoidActivty">
+        <activity android:name=".qqalbum.AlbumActivity">
         </activity>
     </application>
 

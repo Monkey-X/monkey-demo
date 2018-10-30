@@ -3,6 +3,16 @@ apply plugin: 'kotlin-android'//这里添加
 apply plugin: 'kotlin-android-extensions'//这里添加
 
 android {
+//    签名属性配置
+    signingConfigs {
+        config {
+            keyAlias 'monkey@xlc'
+            keyPassword 'monkey@xlc'
+            storeFile file('C:/Users/xlc/Desktop/monkey.jks')
+            storePassword 'monkey@xlc'
+        }
+    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildSdkVersion
     defaultConfig {
@@ -13,6 +23,12 @@ android {
         versionName rootProject.ext.versionName
         multiDexEnabled true  //  dex突破65535的限制
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
     }
 
     buildTypes {
@@ -20,14 +36,16 @@ android {
             minifyEnabled false  //开启混淆
             zipAlignEnabled false  //Zipalign 优化
             shrinkResources false   //移除无用的resource文件
-//            signingConfig     s设置签名信息
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
-    }
 
-    android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = "Monkey-v${defaultConfig.versionName}_${variant.buildType.name}.apk"
+        debug {
+            minifyEnabled true  //开启混淆
+            zipAlignEnabled true  //Zipalign 优化
+            shrinkResources true   //移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 
@@ -37,20 +55,46 @@ android {
         }
     }
 
-//    productFlavors {//友盟统计的多渠道打包
-//        baidu {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
-//        }
-//        wandoujia {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
-//        }
-//        xiaomi {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
-//        }
-//        google {
-//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "google"]
-//        }
-//    }
+//    多渠道打包
+//    flavorDimensions("default")
+    productFlavors {
+        baidu {
+            //设置该渠道的渠道标识，要和清单文件中的保持一致
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+            //设置该渠道下的包名
+//            applicationId "com.monkey.baidu"
+//            //设置该渠道下的versionCode
+//            versionCode 1
+//            //设置该渠道下的versionName
+//            versionName "1.0.1"
+        }
+
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+
+        google {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "google"]
+        }
+    }
+
+
+
+//    批量处理
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+//打包时生成不同渠道名称的apk
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Monkey-v${defaultConfig.versionName}_${variant.buildType.name}_${variant.productFlavors[0].name}.apk"
+        }
+    }
+
 
 }
 
@@ -108,4 +152,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     //okhttp的log信息
     implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
+
+    //lottie的动画库json加载动画库
+    implementation 'com.airbnb.android:lottie:2.5.5'
+
 }

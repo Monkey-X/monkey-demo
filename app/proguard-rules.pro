@@ -31,5 +31,23 @@
   public *;
 }
 
+#-ignorewarnings
+
 # for DexGuard only
 -keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+#友盟统计混淆规则
+-keep class com.umeng.** {*;}
+
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+#友盟SDK需要引用资源文件，防止可能将R.java删除
+-keep public class com.example.xlc.monkey.R$*{
+public static final int *;
+}
