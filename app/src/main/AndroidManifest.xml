@@ -49,6 +49,11 @@
             android:value="${UMENG_CHANNEL_VALUE}"/>
 
         <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <!-- 监听网络的变化 -->
         <receiver android:name=".net.NetBroadcastReceiver">
@@ -103,11 +108,7 @@
         <activity android:name=".wxapi.WXEntryActivity">
         </activity>
         <activity android:name=".activity.LottieActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".activity.ScreenShotActivity">
         </activity>

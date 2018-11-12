@@ -156,4 +156,7 @@ dependencies {
     //lottie的动画库json加载动画库
     implementation 'com.airbnb.android:lottie:2.5.5'
 
+    //luban的图片压缩接近微信的压缩
+    implementation 'top.zibin:Luban:1.1.8'
+
 }

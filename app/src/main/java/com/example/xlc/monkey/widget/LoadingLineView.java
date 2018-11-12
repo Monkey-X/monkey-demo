@@ -3,6 +3,7 @@ package com.example.xlc.monkey.widget;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 /**
@@ -11,6 +12,24 @@ import android.view.View;
  * @descirbe: 线性加载动画
  */
 public class LoadingLineView extends View {
+
+    /**
+     * 画笔宽度（等于view高度）
+     */
+    private int paintWidth;
+
+    /**
+     * 底色
+     */
+    private int bgColor = 0xFFe1e5e8;
+
+    /**
+     * loading的颜色
+     */
+    private int loadingColor = 0xFFf66b12;
+
+
+
 
     public LoadingLineView(Context context) {
         this(context,null);
@@ -31,11 +50,18 @@ public class LoadingLineView extends View {
      * @param attrs
      */
     private void getAtt(AttributeSet attrs) {
-
+        int paintWidth = dp2px(2);
     }
 
     private void init() {
 
+    }
+
+
+
+
+    public int dp2px(int dpVal){
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dpVal,getResources().getDisplayMetrics());
     }
 
 
