@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_picture"
+        android:background="#dadada"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/iv_is_gif"
+        android:layout_gravity="right|bottom"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:padding="2dp"
+        android:src="@mipmap/gif"
+        android:visibility="gone"
+        android:layout_width="30dp"
+        android:layout_height="18dp"/>
+</FrameLayout>

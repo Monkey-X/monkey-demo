@@ -24,4 +24,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+
+    <declare-styleable name="TweetPicturesLayout">
+        <attr name="verticalSpace" />
+        <attr name="horizontalSpace" />
+        <attr name="column" format="integer" />
+        <attr name="maxPictureSize" format="dimension" />
+    </declare-styleable>
+
 </resources>
