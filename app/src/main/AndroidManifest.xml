@@ -3,22 +3,23 @@
           package="com.example.xlc.monkey">
 
     <uses-sdk android:minSdkVersion="8"/>
-    <!--文件写入-->
+    <!-- 文件写入 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- android8.0未知来源安装包的安装权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
 
     <!-- 必须的权限 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <!-- 推荐的权限 -->
     <!-- 添加如下权限，以便使用更多的第三方SDK和更精准的统计数据 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <!-- 读取系统的短信的权限 -->
     <uses-permission android:name="android.permission.READ_SMS"/>
@@ -108,11 +109,14 @@
         <activity android:name=".wxapi.WXEntryActivity">
         </activity>
         <activity android:name=".activity.LottieActivity">
-
         </activity>
         <activity android:name=".activity.ScreenShotActivity">
         </activity>
         <activity android:name=".qqalbum.AlbumActivity">
+        </activity>
+        <activity android:name=".activity.ViewStubActivity">
+        </activity>
+        <activity android:name=".activity.NotificationActivity">
         </activity>
     </application>
 

@@ -37,7 +37,29 @@ public class MainActivity extends BaseActivity implements RecycleViewAdapter.OnI
 
     @Override
     protected void initData() {
-
+//        获取google提供的唯一id
+//        Executors.newSingleThreadExecutor().execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    final String gaid = AdvertisingIdClient.getGoogleAdId(getApplicationContext());
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            ToastUtil.showLongToast(MainActivity.this,gaid);
+//                        }
+//                    });
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            ToastUtil.showLongToast(MainActivity.this,"获取失败");
+//                        }
+//                    });
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -55,6 +77,9 @@ public class MainActivity extends BaseActivity implements RecycleViewAdapter.OnI
                 break;
             case 3:
                 startActivity(new Intent(this,SmsActivity.class));
+                break;
+            case 4:
+//                startActivity(new Intent());
                 break;
         }
     }

@@ -82,8 +82,6 @@ android {
         }
     }
 
-
-
 //    批量处理
     productFlavors.all {
         flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
@@ -159,4 +157,9 @@ dependencies {
     //luban的图片压缩接近微信的压缩
     implementation 'top.zibin:Luban:1.1.8'
 
+    //eventbus的集成，事件分发总线
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //添加MPAndroidChart图标控件
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 }

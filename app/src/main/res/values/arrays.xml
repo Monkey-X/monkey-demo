@@ -6,7 +6,7 @@
         <item>图片选择</item>
         <item>闪屏</item>
         <item>短信</item>
-        <item>recycleView</item>
+        <item>ViewStub</item>
         <item>recycleView</item>
         <item>recycleView</item>
     </string-array>
