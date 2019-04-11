@@ -3,6 +3,7 @@ package com.example.xlc.monkey.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
@@ -12,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.RequestManager;
 import com.example.xlc.monkey.R;
 import com.example.xlc.monkey.bean.Image;
@@ -273,12 +274,13 @@ public class TweetPicturesLayout extends ViewGroup implements View.OnClickListen
                 view.setTag(i);
                 view.setOnClickListener(this);
                 String thumb = image.getThumb();
-                DrawableRequestBuilder<String> builder = requestManager.load(thumb).centerCrop().error(R.mipmap.ic_split_graph);
+                RequestBuilder<Drawable> error = requestManager.load(thumb).centerCrop().error(R.mipmap.ic_split_graph);
+                //                DrawableRequestBuilder<String> builder = requestManager.load(thumb).centerCrop().error(R.mipmap.ic_split_graph);
                 if (thumb.toLowerCase().endsWith("gif")) {
                     view.findViewById(R.id.iv_is_gif).setVisibility(VISIBLE);
                 }
                 addView(view);
-                builder.into((ImageView) view.findViewById(R.id.iv_picture));
+                error.into((ImageView) view.findViewById(R.id.iv_picture));
             }
             //有数据进行显示，改变可视状态
             if (getVisibility() ==VISIBLE) {

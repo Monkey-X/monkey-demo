@@ -80,7 +80,7 @@ public class MPChartUtil {
 
         // 设置x轴数据偏移量
         xAxis.setYOffset(5);
-        final List<String> labels;
+
     }
 
 }

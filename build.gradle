@@ -9,9 +9,9 @@ buildscript {
     repositories {
 //        阿里云的仓库
         maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        mavenCentral()
         google()
         jcenter()
-        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
@@ -32,17 +32,17 @@ allprojects {
             url 'https://jitpack.io'
         }
         jcenter()
-        google()
         mavenCentral()
+        google()
     }
 }
 
 ext {
-    compileSdkVersion = 27
+    compileSdkVersion = 28
     buildSdkVersion = '27.0.3'
     applicationId = "com.example.xlc.monkey"
     minSdkVersion = 16
-    targetSdkVersion = 27
+    targetSdkVersion = 28
     versionCode = 1
     versionName = "1.0.0"
     supportVersion = '27.1.1'

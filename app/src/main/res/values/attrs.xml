@@ -63,4 +63,26 @@
         <!--链接的图标-->
         <attr name="ep_link_res" format="reference"/>
     </declare-styleable>
+
+
+    <declare-styleable name="ChangeableProgress">
+        <attr name="viewWidth" format="dimension"></attr>
+        <attr name="viewHeight" format="dimension"></attr>
+        <attr name="bgColor" format="color"></attr>
+        <attr name="borderColor" format="color"></attr>
+        <attr name="progressColor" format="color"></attr>
+        <attr name="borderWidth" format="dimension"></attr>
+
+        <attr name="allInterval" format="dimension"></attr>
+        <attr name="leftInterval" format="dimension"></attr>
+        <attr name="topInterval" format="dimension"></attr>
+        <attr name="rightInterval" format="dimension"></attr>
+        <attr name="bottomInterval" format="dimension"></attr>
+        <attr name="useAnimation" format="boolean"></attr>
+        <attr name="maxProgress" format="float"></attr>
+        <attr name="nowProgress" format="float"></attr>
+        <attr name="angle" format="integer"></attr>
+        <attr name="duration" format="integer"></attr>
+        <attr name="radius" format="dimension"></attr>
+    </declare-styleable>
 </resources>

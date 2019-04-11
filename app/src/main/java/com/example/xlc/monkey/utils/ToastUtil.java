@@ -1,5 +1,11 @@
 package com.example.xlc.monkey.utils;
 
+/**
+ * @author:xlc
+ * @date:2019/3/25
+ * @descirbe:
+ */
+
 import android.content.Context;
 import android.widget.Toast;
 
@@ -7,8 +13,7 @@ public class ToastUtil {
 
     private static Toast mToast;
 
-    private ToastUtil() {
-    }
+    private ToastUtil(){} ;
 
 
     //取消toast的显示
