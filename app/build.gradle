@@ -6,23 +6,25 @@ android {
 //    签名属性配置
     signingConfigs {
         config {
-            keyAlias 'monkey@xlc'
-            keyPassword 'monkey@xlc'
-            storeFile file('C:/Users/xlc/Desktop/monkey.jks')
-            storePassword 'monkey@xlc'
+            keyAlias 'monkey@xlc'  //签名证书中秘钥别名
+            keyPassword 'monkey@xlc' //签名证书中秘钥的密码
+            storeFile file('C:/Users/xlc/Desktop/monkey.jks') //签名证书文件
+            storePassword 'monkey@xlc' //签名证书文件的密码
+//            storeType  签名证书的类型
         }
     }
 
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildSdkVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion//编译该模块的SDK版本
+    buildToolsVersion rootProject.ext.buildSdkVersion//Android构建工具的版本
     defaultConfig {
         applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        targetSdkVersion rootProject.ext.targetSdkVersion//基于那个SDK版本开发
+        versionCode rootProject.ext.versionCode//app内部的版本号，用于控制app升级
+        versionName rootProject.ext.versionName//app版本名，发布的版本号
         multiDexEnabled true  //  dex突破65535的限制
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//单元测试使用的Runner，默认为android.test.InstrumentationTestRunner
         flavorDimensions "versionCode"
     }
 
@@ -31,13 +33,18 @@ android {
         useNewCruncher = false
     }
 
-    buildTypes {
+    buildTypes {//配置构建不同类型的APK
         release {
+//            applicationIdSuffix  //配置applicationId的后缀
+//            buildConfigField() //配置不同的开发环境，如测试环境和正式环境
+            debuggable false //表示是否支持断点调试
+            jniDebuggable false //表示是否可以调试NDK代码
             minifyEnabled false  //开启混淆
-            zipAlignEnabled false  //Zipalign 优化
+            zipAlignEnabled false  //Zipalign优化，提高apk运行效率
             shrinkResources false   //移除无用的resource文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+            signingConfig signingConfigs.config//默认的签名信息
+//            multiDexEnabled false  //是否启用自动拆分多个DEX的功能
         }
 
         debug {
@@ -45,6 +52,7 @@ android {
             zipAlignEnabled true  //Zipalign 优化
             shrinkResources true   //移除无用的resource文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//同时配置多个ProGuard配置文件
             signingConfig signingConfigs.config
         }
     }
@@ -132,6 +140,9 @@ dependencies {
     //glide 的图片加载框架
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //Picasso的图片加载框架
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     //smartRefreshLatout 列表刷新控件上啦加载更多，下拉刷新
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
