@@ -1,6 +1,11 @@
 
 include ':app'
 
+//配置子项目，指定相应的子工程的目录
+//include ':example25'
+//project (':example25').projectDir = new File(rootDir,'chapter02/example25')
+
+//在android项目中集成Flutter问题
 setBinding(new Binding([gradle:this]))
 evaluate(new File(settingsDir.parentFile,'mongkey_flutter/.android/include_flutter.groovy'
 ))

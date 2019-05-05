@@ -4,32 +4,21 @@
 
     <uses-sdk android:minSdkVersion="8"/>
     <!-- 文件写入 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!-- android8.0未知来源安装包的安装权限 -->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
-
-    <!-- 必须的权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> <!-- android8.0未知来源安装包的安装权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/> <!-- 必须的权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <!-- 推荐的权限 -->
+    <uses-permission android:name="android.permission.INTERNET"/> <!-- 推荐的权限 -->
     <!-- 添加如下权限，以便使用更多的第三方SDK和更精准的统计数据 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-    <!-- 读取系统的短信的权限 -->
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <!-- 接收短信权限 -->
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <!-- 读取系统的联系人的权限 -->
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <!-- 指纹认证的权限 -->
-    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
-    <!-- 悬浮窗口权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- 读取系统的短信的权限 -->
+    <uses-permission android:name="android.permission.READ_SMS"/> <!-- 接收短信权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/> <!-- 读取系统的联系人的权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/> <!-- 指纹认证的权限 -->
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/> <!-- 悬浮窗口权限 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
@@ -40,7 +29,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".activity.FloatViewActivity">
+        </activity>
         <!-- 友盟统计 -->
         <meta-data
             android:name="UMENG_APPKEY"
@@ -55,14 +45,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <!-- 监听网络的变化 -->
+        </activity> <!-- 监听网络的变化 -->
         <receiver android:name=".net.NetBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
-        </receiver>
-        <!-- 监听短信的接受 -->
+        </receiver> <!-- 监听短信的接受 -->
         <receiver android:name=".sms.SmsBroadcastReceiver">
             <intent-filter android:priority="1000">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
@@ -84,9 +72,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
-        </provider>
-
-        <!-- fitAndroid8 -->
+        </provider> <!-- fitAndroid8 -->
         <!-- <provider android:name="android.support.v4.content.FileProvider" -->
         <!-- android:authorities="${applicationId}.android.fileprovider" -->
         <!-- android:exported="false" -->
@@ -95,7 +81,6 @@
         <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
         <!-- android:resource="@xml/files_paths"/> -->
         <!-- </provider> -->
-
         <activity
             android:name=".activity.ScrollingActivity"
             android:label="@string/title_activity_scrolling">
