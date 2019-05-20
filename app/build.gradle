@@ -5,6 +5,13 @@ apply plugin: 'kotlin-android-extensions'//这里添加
 //    id 'com.android.application'
 //}
 
+//格式化当前的时间
+def buildTime(){
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd')
+    return formattedDate
+}
+
 android {
 //    签名属性配置
     signingConfigs {
@@ -35,6 +42,19 @@ android {
         cruncherEnabled = false
         useNewCruncher = false
     }
+
+//    配置Java编译选项
+//    compileOptions{
+//        encoding = 'utf-8'
+//        sourceCompatibility = JavaVersion.VERSION_1_6
+//        targetCompatibility = JavaVersion.VERSION_1_6
+//    }
+
+//    adb的选项配置
+//    adbOptions{
+//        timeOutInMs = 5*1000
+//        installOptions '-r', '-s'
+//    }
 
     buildTypes {//配置构建不同类型的APK
         release {
@@ -72,6 +92,7 @@ android {
         baidu {
             //设置该渠道的渠道标识，要和清单文件中的保持一致
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+            buildConfigField('String','WEB_URL','"http://www.baidu.com"')//配置BuildConfig中的自定义常量
             //设置该渠道下的包名
 //            applicationId "com.monkey.baidu"
 //            //设置该渠道下的versionCode
@@ -178,4 +199,5 @@ dependencies {
 
     //添加MPAndroidChart图标控件
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+
 }
