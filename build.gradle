@@ -82,3 +82,5 @@ task clean(type: Delete) {
 //            }
 //    }
 //}
+
+//adb shell settings get secure android_id  获取androidId
