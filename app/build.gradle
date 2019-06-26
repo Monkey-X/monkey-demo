@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'//这里添加
 //}
 
 //格式化当前的时间
-def buildTime(){
+def buildTime() {
     def date = new Date()
     def formattedDate = date.format('yyyyMMdd')
     return formattedDate
@@ -92,7 +92,7 @@ android {
         baidu {
             //设置该渠道的渠道标识，要和清单文件中的保持一致
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
-            buildConfigField('String','WEB_URL','"http://www.baidu.com"')//配置BuildConfig中的自定义常量
+            buildConfigField('String', 'WEB_URL', '"http://www.baidu.com"')//配置BuildConfig中的自定义常量
             //设置该渠道下的包名
 //            applicationId "com.monkey.baidu"
 //            //设置该渠道下的versionCode

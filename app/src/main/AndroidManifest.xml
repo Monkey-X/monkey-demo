@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.xlc.monkey">
-
-    <!--defaultConfig没有配置minSdkVersion时，就会从AndroidManifest中读取-->
+          package="com.example.xlc.monkey"> <!-- defaultConfig没有配置minSdkVersion时，就会从AndroidManifest中读取 -->
     <uses-sdk android:minSdkVersion="8"/>
-    <!--<uses-sdk android:targetSdkVersion="27"/>-->
-
-
+    <!-- <uses-sdk android:targetSdkVersion="27"/> -->
     <!-- 文件写入 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> <!-- android8.0未知来源安装包的安装权限 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/> <!-- 必须的权限 -->
@@ -33,16 +29,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!--设置应用需要的共享库-->
-        <!--<uses-library-->
-            <!--android:name="com.google.android.maps"-->
-            <!--android:required="true"-->
-            <!--/>-->
-
-        <activity android:name=".activity.FloatViewActivity">
+        <activity android:name=".activity.RecyclerActivity">
         </activity>
-        <!-- 友盟统计 -->
+        <!-- 设置应用需要的共享库 -->
+        <!-- <uses-library -->
+        <!-- android:name="com.google.android.maps" -->
+        <!-- android:required="true" -->
+        <!-- /> -->
+        <activity android:name=".activity.FloatViewActivity">
+        </activity> <!-- 友盟统计 -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5b72b15fb27b0a414a000035"/>

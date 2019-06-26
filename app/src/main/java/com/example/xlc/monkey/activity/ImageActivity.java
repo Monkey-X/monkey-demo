@@ -49,7 +49,7 @@ public class ImageActivity extends BaseActivity {
     @AfterPermissionGranted(RC_WRITE_STORAGE)
     private void skipToImage() {
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        if (EasyPermissions.hasPermissions(this, perms)) {
+        if (EasyPermissions.hasPermissions(this, perms)) {//动态申请权限
             toMatisse();
         } else {
             EasyPermissions.requestPermissions(this, "", RC_WRITE_STORAGE,perms);
