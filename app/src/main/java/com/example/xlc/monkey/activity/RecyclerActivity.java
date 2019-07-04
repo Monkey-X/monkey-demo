@@ -1,5 +1,6 @@
 package com.example.xlc.monkey.activity;
 
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.xlc.monkey.R;
@@ -27,5 +28,33 @@ public class RecyclerActivity extends BaseActivity {
         LooperLayoutManager layoutManager = new LooperLayoutManager();
         layoutManager.setLooperEnable(true);
         recyclerView.setLayoutManager(layoutManager);
+    }
+
+
+    class myTask extends AsyncTask<String,Object,Long>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Long doInBackground(String... strings) {
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Object... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(Long aLong) {
+            super.onPostExecute(aLong);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
     }
 }

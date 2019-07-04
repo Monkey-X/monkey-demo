@@ -66,6 +66,8 @@ android {
             zipAlignEnabled false  //Zipalign优化，提高apk运行效率
             shrinkResources false   //移除无用的resource文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //开启了优化，optimize优化的意思
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config//默认的签名信息
 //            multiDexEnabled false  //是否启用自动拆分多个DEX的功能
         }
@@ -151,6 +153,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //添加Flutter Moudle的依赖，在旧项目中引入flutter
     implementation project(':flutter')
+
+    //添加OrmLite,操作数据库
+    implementation files('libs/ormlite-android-5.1.jar')
+    implementation files('libs/ormlite-core-5.1.jar')
 
     //butterknife
     implementation 'com.jakewharton:butterknife:10.1.0'

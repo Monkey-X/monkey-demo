@@ -18,6 +18,7 @@
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
+#将源代码中有意义的类名转换成SourceFile
 #-renamesourcefileattribute SourceFile
 
 #知乎图片选择器Matisse的混淆规则
@@ -37,6 +38,7 @@
 -keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 
 #友盟统计混淆规则
+#将一个类以及类中所有内容都给keep住不被混淆
 -keep class com.umeng.** {*;}
 
 -keepclassmembers class * {

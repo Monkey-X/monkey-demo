@@ -94,4 +94,31 @@
         <attr name="customTextSize" format="dimension"/>
         <attr name="customBackgroundAngle" format="integer"/>
     </declare-styleable>
+
+
+     <!--为了方便扩展其他Layout，定义在外层，命名以layout_开头-->
+    <attr name="layout_radius" format="dimension"/>
+    <attr name="layout_shadowColor" format="color"/>
+    <attr name="layout_shadowEvaluation" format="dimension"/>
+    <attr name="layout_shadowDx" format="dimension"/>
+    <attr name="layout_shadowDy" format="dimension"/>
+
+    <!--用统一一个EasyLayout，用于封装读取自定义属性-->
+    <declare-styleable name="EasyLayout">
+        <attr name="layout_radius"/>
+        <attr name="layout_shadowColor"/>
+        <attr name="layout_shadowEvaluation"/>
+        <attr name="layout_shadowDx"/>
+        <attr name="layout_shadowDy"/>
+    </declare-styleable>
+
+    <declare-styleable name="EasyConstraintLayout_layout">
+        <attr name="layout_radius"/>
+        <attr name="layout_shadowColor"/>
+        <attr name="layout_shadowEvaluation"/>
+        <attr name="layout_shadowDx"/>
+        <attr name="layout_shadowDy"/>
+    </declare-styleable>
+
+
 </resources>
