@@ -32,10 +32,10 @@
   public *;
 }
 
-#-ignorewarnings
+-ignorewarnings
 
 # for DexGuard only
--keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 
 #友盟统计混淆规则
 #将一个类以及类中所有内容都给keep住不被混淆

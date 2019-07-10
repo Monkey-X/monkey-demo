@@ -29,9 +29,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.RecyclerActivity">
+        <activity android:name=".activity.CoordinatorActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
-        <!-- 设置应用需要的共享库 -->
+        <activity android:name=".activity.RecyclerActivity">
+        </activity> <!-- 设置应用需要的共享库 -->
         <!-- <uses-library -->
         <!-- android:name="com.google.android.maps" -->
         <!-- android:required="true" -->
@@ -46,11 +52,7 @@
             android:value="${UMENG_CHANNEL_VALUE}"/>
 
         <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity> <!-- 监听网络的变化 -->
         <receiver android:name=".net.NetBroadcastReceiver">
             <intent-filter>
