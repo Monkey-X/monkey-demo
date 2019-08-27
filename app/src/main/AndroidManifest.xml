@@ -29,6 +29,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.JsBridgeActivity">
+        </activity>
         <activity android:name=".activity.CoordinatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -52,7 +54,6 @@
             android:value="${UMENG_CHANNEL_VALUE}"/>
 
         <activity android:name=".activity.MainActivity">
-
         </activity> <!-- 监听网络的变化 -->
         <receiver android:name=".net.NetBroadcastReceiver">
             <intent-filter>

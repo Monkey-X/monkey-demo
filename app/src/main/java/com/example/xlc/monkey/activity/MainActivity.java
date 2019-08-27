@@ -1,8 +1,10 @@
 package com.example.xlc.monkey.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.LruCache;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -12,7 +14,9 @@ import com.example.xlc.monkey.adapter.RecycleViewAdapter;
 import com.example.xlc.monkey.base.BaseActivity;
 import com.example.xlc.monkey.sms.SmsActivity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,6 +40,13 @@ public class MainActivity extends BaseActivity implements RecycleViewAdapter.OnI
         RecycleViewAdapter recycleViewAdapter = new RecycleViewAdapter(items, MainActivity.this);
         recycleViewAdapter.setOnItemClickListener(this);
         mRecycleview.setAdapter(recycleViewAdapter);
+
+        int cacheSize = 4*1024*1024;
+
+        //LruCache算法，最近最少使用算法
+        LruCache<String, Bitmap> lruCache = new LruCache<>(cacheSize);
+        ArrayList<String> list = new ArrayList<>();
+        LinkedList<String> objects = new LinkedList<>();
     }
 
     @Override

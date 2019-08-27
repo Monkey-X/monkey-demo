@@ -160,6 +160,7 @@ dependencies {
 
     //butterknife
     implementation 'com.jakewharton:butterknife:10.1.0'
+    //butterknife的注解处理器
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
     //知乎的图片选择器
@@ -205,5 +206,8 @@ dependencies {
 
     //添加MPAndroidChart图标控件
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+
+    //jsBridge
+    implementation 'com.github.lzyzsd:jsbridge:1.0.4'
 
 }

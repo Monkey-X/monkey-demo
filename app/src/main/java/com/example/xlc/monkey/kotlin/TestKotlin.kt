@@ -15,6 +15,7 @@ fun sum(x:Int){
 }
 
 fun main(args:Array<String>){
-    str="HELLO WORLD"
-    println(str)
+    val age = 18
+    val name = "xulincheng"
+    println("我叫$name,今年$age 岁")
 }

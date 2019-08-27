@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.widget.Button;
 
+import com.bumptech.glide.Glide;
 import com.example.xlc.monkey.R;
 import com.example.xlc.monkey.base.BaseActivity;
 import com.example.xlc.monkey.utils.MyGlideEngine;
@@ -32,6 +33,21 @@ public class ImageActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+//        findViewById()
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+        mSkipImage.post(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+//        LocalBroadcastManager.getInstance(this).sendBroadcast()
+        Glide.with(this).load()
 
     }
 

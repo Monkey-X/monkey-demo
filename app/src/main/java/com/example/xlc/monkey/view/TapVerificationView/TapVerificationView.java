@@ -1,7 +1,6 @@
 package com.example.xlc.monkey.view.TapVerificationView;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -345,10 +344,7 @@ public class TapVerificationView extends View {
     }
 
 
-    public static int dp2px(float dp) {
-        float density = Resources.getSystem().getDisplayMetrics().density;
-        return (int) (density * dp + 0.5f);
-    }
+
 
     public interface VerifyListener {
         void onResult(boolean result);
