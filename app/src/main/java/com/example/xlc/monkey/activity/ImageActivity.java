@@ -3,9 +3,9 @@ package com.example.xlc.monkey.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.view.View;
 import android.widget.Button;
 
-import com.bumptech.glide.Glide;
 import com.example.xlc.monkey.R;
 import com.example.xlc.monkey.base.BaseActivity;
 import com.example.xlc.monkey.utils.MyGlideEngine;
@@ -33,7 +33,7 @@ public class ImageActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-//        findViewById()
+        //        findViewById()
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -46,16 +46,39 @@ public class ImageActivity extends BaseActivity {
 
             }
         });
-//        LocalBroadcastManager.getInstance(this).sendBroadcast()
-        Glide.with(this).load()
+        //        LocalBroadcastManager.getInstance(this).sendBroadcast()
+        //        Glide.with(this).load()
+        //        WindowManager windowManager = getWindowManager();
+        //        Window window = getWindow();
+        //        Dialog dialog = new Dialog(this);
+        ////        dialog.setContentView();
+        //dialog.show();
+        //dialog.dismiss();
+//        ToastUtil.showLongToast();
+//        NetWorkManager.getInstance().init().
 
     }
 
     @Override
     protected void initData() {
+        mSkipImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+            mSkipImage.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return false;
+                }
+            });
     }
 
+    @Override
+    public boolean supportRequestWindowFeature(int featureId) {
+        return super.supportRequestWindowFeature(featureId);
+    }
 
     @OnClick(R.id.skipImage)
     public void onViewClicked() {
@@ -68,7 +91,7 @@ public class ImageActivity extends BaseActivity {
         if (EasyPermissions.hasPermissions(this, perms)) {//动态申请权限
             toMatisse();
         } else {
-            EasyPermissions.requestPermissions(this, "", RC_WRITE_STORAGE,perms);
+            EasyPermissions.requestPermissions(this, "", RC_WRITE_STORAGE, perms);
         }
     }
 
