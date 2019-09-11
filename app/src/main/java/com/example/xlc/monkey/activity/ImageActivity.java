@@ -1,8 +1,13 @@
 package com.example.xlc.monkey.activity;
 
 import android.Manifest;
+import android.app.IntentService;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.support.annotation.NonNull;
+import android.util.LruCache;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,10 +18,22 @@ import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.TreeSet;
+import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
+
+import static com.example.xlc.monkey.ImagesCompress.FileUtil.runOnUiThread;
 
 public class ImageActivity extends BaseActivity {
 
@@ -46,6 +63,21 @@ public class ImageActivity extends BaseActivity {
 
             }
         });
+        String.valueOf(1);
+        Integer.parseInt("1");
+//        IntentService
+        new Handler();
+        HashSet<Object> objects = new HashSet<>();
+        LinkedHashSet<String> strings = new LinkedHashSet<>();
+        ArrayList<String> strings1 = new ArrayList<>();
+        LinkedList<String> strings2 = new LinkedList<>();
+        Vector<String> strings3 = new Vector<>();
+        TreeSet<String> strings4 = new TreeSet<>();
+        ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
+
+
+        LruCache<String, String> stringStringLruCache = new LruCache<String, String>(10);
+        //        strings.add()
         //        LocalBroadcastManager.getInstance(this).sendBroadcast()
         //        Glide.with(this).load()
         //        WindowManager windowManager = getWindowManager();
@@ -56,6 +88,8 @@ public class ImageActivity extends BaseActivity {
         //dialog.dismiss();
 //        ToastUtil.showLongToast();
 //        NetWorkManager.getInstance().init().
+        EventBus.getDefault().register(this);
+//EventBus.getDefault().post();
 
     }
 
